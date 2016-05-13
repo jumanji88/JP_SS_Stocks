@@ -6,6 +6,8 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -26,12 +28,14 @@ public class TestStockUtility {
 
 	static List<Trade> tradeList;
 	static List<Stock> stockList;
+	private static final Logger logger = LogManager.getLogger(StockUtility.class);
 
 	/*
 	 * Populate Stock and Trade lists with random data
 	 */
 	@BeforeClass
 	public static void setUp() throws Exception {
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		tradeList = new ArrayList<Trade>();
 		stockList = new ArrayList<Stock>();
 
@@ -645,6 +649,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(711401), Timestamp.valueOf("2016-05-12 10:20:15.562"),
 				TradeType.SELL, BigDecimal.valueOf(1856));
 		tradeList.add(tradeDetails);
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 
 	}
 
@@ -653,12 +658,13 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_Dividend() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		BigDecimal price = null;
 		String stockSymbol = null;
 		List<Stock> localStockList = null;
 		assertEquals(ErrorStrings.stockListError, StockUtility.dividendYieldOrPERatio(price, stockSymbol, localStockList,
 				StockFunctionType.DIVIDEND_YIELD));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -666,12 +672,13 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_PERatio() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		BigDecimal price = null;
 		String stockSymbol = null;
 		List<Stock> localStockList = null;
 		assertEquals(ErrorStrings.stockListError,
 				StockUtility.dividendYieldOrPERatio(price, stockSymbol, localStockList, StockFunctionType.PE_RATIO));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -679,7 +686,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_Basic() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = null;
 		BigDecimal quantity = null;
 		TradeType typeOfTrade = null;
@@ -688,6 +695,7 @@ public class TestStockUtility {
 		Timestamp currentTime = null;
 		assertEquals(ErrorStrings.stockSymbolError,
 				StockUtility.recordTrade(stockSymbol, quantity, currentTime, typeOfTrade, price, localTradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -695,11 +703,12 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_Basic() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = null;
 		Timestamp currentTime = null;
 		assertEquals(ErrorStrings.stockSymbolError, StockUtility.volumeWeightedStockPrice(stockSymbol, currentTime,
 				tradeList, VolumeWeightType.FIVE_MINUTES));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 
 	}
 
@@ -708,10 +717,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testGeometricMean_Basic() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> localTradeList = null;
 		List<Stock> localStockList = null;
 		assertEquals(ErrorStrings.stockListError, StockUtility.geometricMean(localStockList, localTradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 	
 	/*
@@ -719,12 +729,13 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_Dividend_ListEmpty() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		BigDecimal price = new BigDecimal(0);
 		String stockSymbol = new String("ABC");
 		List<Stock> localStockList = new ArrayList<Stock>();
 		assertEquals(ErrorStrings.stockListError, StockUtility.dividendYieldOrPERatio(price, stockSymbol, localStockList,
 				StockFunctionType.DIVIDEND_YIELD));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -732,11 +743,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_TEA() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("0E-20", StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(31), "TEA", stockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -744,11 +755,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_GIN() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("0.05405405405405405406", StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(37), "GIN", stockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -756,11 +767,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_COFF() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("0.04545454545454545455", StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(22), "COFF", stockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -768,11 +779,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_WAT() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("0.42000000000000000000", StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(25), "WAT", stockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -780,11 +791,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_PEP() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("0.63636363636363636364", StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(33), "PEP", stockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -792,9 +803,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_WrongSymbol() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockSymbolNotFound, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(31),
 				"TIN", stockList, StockFunctionType.DIVIDEND_YIELD));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -802,10 +814,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_ZeroPrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockPriceError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(0), "TEA",
 				stockList, StockFunctionType.DIVIDEND_YIELD));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -813,9 +825,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_NegativePrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockPriceError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(-1), "TEA",
 				stockList, StockFunctionType.DIVIDEND_YIELD));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -823,10 +836,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_NullSymbol() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockSymbolError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(31), null,
 				stockList, StockFunctionType.DIVIDEND_YIELD));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -834,10 +847,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYieldOrPERatio_NullStockPrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockPriceError,
 				StockUtility.dividendYieldOrPERatio(null, "TEA", stockList, StockFunctionType.DIVIDEND_YIELD));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -845,7 +858,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_NullLastDividend() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -860,7 +873,7 @@ public class TestStockUtility {
 
 		assertEquals(ErrorStrings.lastDividendError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(22), "COFF",
 				localStockList, StockFunctionType.DIVIDEND_YIELD).toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -868,7 +881,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_NegLastDividend() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -884,7 +897,7 @@ public class TestStockUtility {
 
 		assertEquals(ErrorStrings.lastDividendError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(22), "COFF",
 				localStockList, StockFunctionType.DIVIDEND_YIELD).toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -892,7 +905,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_NullFixedDividend() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -907,7 +920,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.fixedDividendError, StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(25), "WAT", localStockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -915,7 +928,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_ZeroFixedDividend() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -931,7 +944,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.fixedDividendError, StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(25), "WAT", localStockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -939,7 +952,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_NullParValue() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -954,7 +967,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.parValueError, StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(25), "WAT", localStockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -962,7 +975,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testDividendYield_ZeroParValue() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -978,7 +991,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.parValueError, StockUtility
 				.dividendYieldOrPERatio(BigDecimal.valueOf(25), "WAT", localStockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -986,10 +999,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_NullStockFunction() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockFunctionFlagError,
 				StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(31), "TEA", stockList, null));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -997,7 +1010,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_NullDividendInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -1012,7 +1025,7 @@ public class TestStockUtility {
 
 		assertEquals(ErrorStrings.lastDividendError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(58), "JAE",
 				localStockList, StockFunctionType.PE_RATIO));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1020,7 +1033,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_ZeroDividendInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -1036,7 +1049,7 @@ public class TestStockUtility {
 
 		assertEquals(ErrorStrings.lastDividendError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(58), "JAE",
 				localStockList, StockFunctionType.PE_RATIO));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1044,7 +1057,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_NegDividendInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = null;
@@ -1060,7 +1073,7 @@ public class TestStockUtility {
 
 		assertEquals(ErrorStrings.lastDividendError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(58), "JAE",
 				localStockList, StockFunctionType.PE_RATIO));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1068,12 +1081,12 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_COFF() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("34.00000000000000000000",
 				StockUtility
 						.dividendYieldOrPERatio(BigDecimal.valueOf(34), "COFF", stockList, StockFunctionType.PE_RATIO)
 						.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1081,12 +1094,12 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_JAE() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("1.56756756756756756757",
 				StockUtility
 						.dividendYieldOrPERatio(BigDecimal.valueOf(58), "JAE", stockList, StockFunctionType.PE_RATIO)
 						.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1094,9 +1107,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testPERatio_TEA() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.lastDividendError, StockUtility.dividendYieldOrPERatio(BigDecimal.valueOf(94), "TEA",
 				stockList, StockFunctionType.PE_RATIO));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 
 	}
 
@@ -1105,9 +1119,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NullStockSymbol() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockSymbolError, StockUtility.recordTrade(null, BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1115,9 +1130,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NullTradeQuantity() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility.recordTrade("WAT", null,
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1125,9 +1141,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NegTradeQuantity() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(-1),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1135,9 +1152,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_ZeroTradeQuantity() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility.recordTrade("WAT", BigDecimal.ZERO,
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1145,9 +1163,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NullTimeStamp() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.currentTimeError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009), null,
 				TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1155,9 +1174,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_ZeroTimeStamp() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.currentTimeError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				new Timestamp(0), TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1165,9 +1185,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NullTradeType() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradeTypeFlagError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), null, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1175,9 +1196,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NullTradePrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradePriceError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, null, tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1185,9 +1207,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NegTradePrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradePriceError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(-1), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1195,9 +1218,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_ZeroTradePrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradePriceError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.ZERO, tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1205,10 +1229,11 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_NullTradeList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> localTradeList = null;
 		assertEquals(ErrorStrings.tradeListError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(1019), localTradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1217,7 +1242,7 @@ public class TestStockUtility {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testRecordTrade_EmptyTradeList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> localTradeList = new ArrayList<Trade>();
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		localTradeList = (List<Trade>) StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009), currentTime,
@@ -1234,6 +1259,7 @@ public class TestStockUtility {
 		assertEquals(currentTime, testTrade.getTradeTimeStamp());
 		assertEquals(TradeType.BUY, testTrade.getTradeTypeObj());
 		assertEquals(BigDecimal.valueOf(1019), testTrade.getTradePrice());
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1241,9 +1267,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_EmptyTradePrice() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradePriceError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(4909009),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(0), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1251,9 +1278,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_EmptyTradeQuantity() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility.recordTrade("WAT", BigDecimal.valueOf(0),
 				Timestamp.valueOf("2016-05-12 10:14:45.587"), TradeType.BUY, BigDecimal.valueOf(1019), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1263,7 +1291,7 @@ public class TestStockUtility {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testRecordTrade_StandardTradeList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		tradeList = (List<Trade>) StockUtility.recordTrade("WAT", BigDecimal.valueOf(15634832),
 				Timestamp.valueOf("2016-05-12 10:12:45.587"), TradeType.SELL, BigDecimal.valueOf(1253), tradeList);
 
@@ -1283,6 +1311,7 @@ public class TestStockUtility {
 		assertEquals(Timestamp.valueOf("2016-05-12 10:20:15.562"), testTrade.getTradeTimeStamp());
 		assertEquals(TradeType.SELL, testTrade.getTradeTypeObj());
 		assertEquals(BigDecimal.valueOf(1856), testTrade.getTradePrice());
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1290,9 +1319,10 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testRecordTrade_Duplicate() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.duplicateFoundError, StockUtility.recordTrade("ALE", BigDecimal.valueOf(7981112),
 				Timestamp.valueOf("2016-05-12 10:18:23.575"), TradeType.SELL, BigDecimal.valueOf(94), tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1300,12 +1330,12 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullTime() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = "AAA";
 		Timestamp currentTime = null;
 		assertEquals(ErrorStrings.currentTimeError, StockUtility.volumeWeightedStockPrice(stockSymbol, currentTime,
 				tradeList, VolumeWeightType.FIVE_MINUTES));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1313,12 +1343,12 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullStockSymbol() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = null;
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		assertEquals(ErrorStrings.stockSymbolError, StockUtility.volumeWeightedStockPrice(stockSymbol, currentTime,
 				tradeList, VolumeWeightType.FIVE_MINUTES));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1326,12 +1356,12 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullVolumeWeightType() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = "AAA";
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		assertEquals(ErrorStrings.volumeWeightFlagError,
 				StockUtility.volumeWeightedStockPrice(stockSymbol, currentTime, tradeList, null));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1339,13 +1369,13 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullTradeList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> localTradeList = null;
 		String stockSymbol = "AAA";
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		assertEquals(ErrorStrings.tradeListError, StockUtility.volumeWeightedStockPrice(stockSymbol, currentTime,
 				localTradeList, VolumeWeightType.FIVE_MINUTES));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1353,13 +1383,13 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_ZeroTradeList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> localTradeList = new ArrayList<Trade>();
 		String stockSymbol = "AAA";
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		assertEquals(ErrorStrings.tradeListError, StockUtility.volumeWeightedStockPrice(stockSymbol, currentTime,
 				localTradeList, VolumeWeightType.FIVE_MINUTES));
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1367,14 +1397,14 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_ALE() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = "ALE";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals("919.73255553122342814958",
 				StockUtility
 						.volumeWeightedStockPrice(stockSymbol, currentTime, tradeList, VolumeWeightType.FIVE_MINUTES)
 						.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1382,14 +1412,14 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_JOE() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = "JOE";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals("1085.92154356063432375174",
 				StockUtility
 						.volumeWeightedStockPrice(stockSymbol, currentTime, tradeList, VolumeWeightType.FIVE_MINUTES)
 						.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1397,14 +1427,14 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_COK() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = "COK";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals("1107.14745551529110738609",
 				StockUtility
 						.volumeWeightedStockPrice(stockSymbol, currentTime, tradeList, VolumeWeightType.FIVE_MINUTES)
 						.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1412,7 +1442,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullSymbolInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1450,7 +1480,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.stockSymbolError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1458,7 +1488,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullTimestampInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1500,7 +1530,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradeTimeError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1508,7 +1538,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NegQuantityInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1548,7 +1578,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1556,7 +1586,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_ZeroQuantityInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1607,7 +1637,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1615,7 +1645,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullQuantityInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1658,7 +1688,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1666,7 +1696,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NegPriceInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1712,7 +1742,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradePriceError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1720,7 +1750,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_ZeroPriceInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1757,7 +1787,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradePriceError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
-
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1765,7 +1795,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_NullPriceInList() throws Exception {
-
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
@@ -1808,6 +1838,7 @@ public class TestStockUtility {
 		assertEquals(ErrorStrings.tradePriceError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
 				.toString());
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 
 	}
 
@@ -1816,12 +1847,14 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testVolumeWeightedStockPrice_UnknownSymbol() throws Exception {
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		String stockSymbol = "LON";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals(ErrorStrings.noRelevantTradesFound,
 				StockUtility
 						.volumeWeightedStockPrice(stockSymbol, currentTime, tradeList, VolumeWeightType.FIVE_MINUTES)
 						.toString());
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 
 	}
 
@@ -1830,7 +1863,9 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testGeometricMean() throws Exception {
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("941.78861012497632730776", StockUtility.geometricMean(stockList, tradeList).toString());
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1838,7 +1873,9 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testGeometricMean_NullStockList() throws Exception {
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.stockListError, StockUtility.geometricMean(null, tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 
 	/*
@@ -1846,7 +1883,9 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testGeometricMean_NullTradeList() throws Exception {
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals(ErrorStrings.tradeListError, StockUtility.geometricMean(stockList, null));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 	
 	/*
@@ -1854,6 +1893,7 @@ public class TestStockUtility {
 	 */
 	@Test
 	public void testGeometricMean_NullStockSymbolInStockList() throws Exception {
+		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		List<Stock> localStockList = new ArrayList<Stock>();
 
 		Stock stockDetails = new Stock();
@@ -1890,5 +1930,6 @@ public class TestStockUtility {
 		localStockList.add(stockDetails);
 		
 		assertEquals(ErrorStrings.stockSymbolError, StockUtility.geometricMean(localStockList, tradeList));
+		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 }

@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.*;
 
 import main.java.bo.Stock;
 import main.java.bo.Trade;
@@ -23,6 +24,8 @@ import main.java.resources.VolumeWeightType;
  *
  */
 public final class StockUtility {
+	
+	private static final Logger logger = LogManager.getLogger(StockUtility.class);
 	
 	/**
 	 * 
@@ -44,35 +47,47 @@ public final class StockUtility {
 			StockFunctionType stockFunction) {
 			
 		try {
-
+			logger.debug("Entering dividendYieldOrPERatio.");
+			
+			logger.debug("Key Values:-  Stock Price: "+stockPrice+" | Stock Symbol: "+stockSymbol+" | Stock List Object: "+stockList+" | Stock Function: "+stockFunction+"  |||");
+			
+			logger.debug("Primary error check started");
 			/*
 			 * Parameter error check
 			 */
 
 			if (stockList == null || stockList.isEmpty()) {
+				logger.error(ErrorStrings.stockListError);
 				return ErrorStrings.stockListError;
 			}
 
 			if (stockPrice == null || stockPrice.equals(BigDecimal.ZERO) || stockPrice.compareTo(BigDecimal.ZERO) < 0) {
+				logger.error(ErrorStrings.stockPriceError);
 				return ErrorStrings.stockPriceError;
 			}
 
 			if (stockSymbol == null) {
+				logger.error(ErrorStrings.stockSymbolError);
 				return ErrorStrings.stockSymbolError;
 			}
 
 			if (stockFunction == null || (stockFunction != StockFunctionType.DIVIDEND_YIELD
 					&& stockFunction != StockFunctionType.PE_RATIO)) {
+				logger.error(ErrorStrings.stockFunctionFlagError);
 				return ErrorStrings.stockFunctionFlagError;
 			}
+			
+			logger.debug("Primary error check ended");
 
 			Iterator<Stock> iterator = stockList.listIterator();
 			Stock tempStock = new Stock();
+			BigDecimal returnThis = new BigDecimal(0);
 
 			while (iterator.hasNext()) {
 				tempStock = iterator.next();
 
 				if (tempStock.getStockSymbol() == null) {
+					logger.error(ErrorStrings.stockSymbolError);
 					return ErrorStrings.stockSymbolError;
 				}
 
@@ -82,14 +97,23 @@ public final class StockUtility {
 					 * PE Ratio Calculation
 					 */
 					if (stockFunction.equals(StockFunctionType.PE_RATIO)) {
+						
+						logger.debug("PE Ratio Calculation Started");
 
 						if (tempStock.getLastDividend() == null || tempStock.getLastDividend().equals(BigDecimal.ZERO)
 								|| tempStock.getLastDividend().compareTo(BigDecimal.ZERO) < 0) {
+							logger.error(ErrorStrings.lastDividendError);
 							return ErrorStrings.lastDividendError;
 						}
-
-						return stockPrice.divide(tempStock.getLastDividend(), 20, BigDecimal.ROUND_HALF_UP).toString();
+						returnThis = stockPrice.divide(tempStock.getLastDividend(), 20, BigDecimal.ROUND_HALF_UP); 
+						
+						logger.debug("PE Ratio Calculation Ended");
+						logger.info("PE Ratio: "+returnThis);
+						logger.debug("Successfully Exiting dividendYieldOrPERatio.");
+						return returnThis;
 					} else {
+						
+						logger.debug("Dividend Yield Calculation Started");
 
 						/*
 						 * Dividend Yield Calculation
@@ -97,41 +121,63 @@ public final class StockUtility {
 
 						if (tempStock.getStockTypeObj() == null || (tempStock.getStockTypeObj() != StockType.COMMON
 								&& tempStock.getStockTypeObj() != StockType.PREFERRED)) {
+							logger.error(ErrorStrings.stockTypeFlagError);
 							return ErrorStrings.stockTypeFlagError;
 						}
 
 						if (tempStock.getStockTypeObj().equals(StockType.COMMON)) {
+							
+							logger.debug("Share Type: "+StockType.COMMON);
 
 							if (tempStock.getLastDividend() == null
 									|| tempStock.getLastDividend().compareTo(BigDecimal.ZERO) < 0) {
+								logger.error(ErrorStrings.lastDividendError);
 								return ErrorStrings.lastDividendError;
 							}
-
-							return tempStock.getLastDividend().divide(stockPrice, 20, BigDecimal.ROUND_HALF_UP);
+							
+							returnThis = tempStock.getLastDividend().divide(stockPrice, 20, BigDecimal.ROUND_HALF_UP);
+							
+							logger.debug("Dividend Yield Calculation Ended");
+							logger.info("Dividend Yield: "+returnThis);
+							logger.debug("Successfully Exiting dividendYieldOrPERatio.");
+							return returnThis;
 						} else {
+							
+							logger.debug("Share Type: "+StockType.PREFERRED);
 
 							if (tempStock.getFixedDividend() == null
 									|| tempStock.getFixedDividend().compareTo(BigDecimal.ZERO) < 0) {
+								logger.error(ErrorStrings.fixedDividendError);
 								return ErrorStrings.fixedDividendError;
 							}
 
 							if (tempStock.getParValue() == null
 									|| tempStock.getParValue().compareTo(BigDecimal.ZERO) < 0) {
+								logger.error(ErrorStrings.parValueError);
 								return ErrorStrings.parValueError;
 							}
-							return tempStock.getFixedDividend().multiply(tempStock.getParValue().divide(
+							returnThis = tempStock.getFixedDividend().multiply(tempStock.getParValue().divide(
 									BigDecimal.valueOf(100).multiply(stockPrice), 20, BigDecimal.ROUND_HALF_UP));
+							
+							logger.debug("Dividend Yield Calculation Ended");
+							logger.info("Dividend Yield: "+returnThis);
+							logger.debug("Successfully Exiting dividendYieldOrPERatio.");
+							return returnThis;
 						}
 					}
 				}
 			}
+			logger.error(ErrorStrings.stockSymbolNotFound);
 			return ErrorStrings.stockSymbolNotFound;
 
 		} catch (NullPointerException e) {
+			logger.error(ErrorStrings.nullPointer);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
+			logger.error(ErrorStrings.arithmeticException);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
+			logger.error(ErrorStrings.unknownException);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -151,40 +197,52 @@ public final class StockUtility {
 			TradeType typeOfTrade, BigDecimal tradePrice, List<Trade> tradeList) {
 
 		try {
+			logger.debug("Entering recordTrade.");
+			logger.debug("Key Values:-  Stock Symbol: "+stockSymbol+" | Quantity: "+quantity+" | Trade Price: "+tradePrice+" | Current Time: "+currentTime+" | Type of Trade: "+typeOfTrade+" | Trade List Obj: "+tradeList+"  |||");
+			logger.debug("Primary error check started");
 
 			/*
 			 * Parameter Error Checks
 			 */
 
 			if (stockSymbol == null || stockSymbol.equals(null)) {
+				logger.error(ErrorStrings.stockSymbolError);
 				return ErrorStrings.stockSymbolError;
 			}
 
 			if (quantity == null || quantity.equals(BigDecimal.ZERO) || quantity.compareTo(BigDecimal.ZERO) < 0) {
+				logger.error(ErrorStrings.tradeQuantityError);
 				return ErrorStrings.tradeQuantityError;
 			}
 
 			if (currentTime == null || currentTime.getTime() <= 0) {
+				logger.error(ErrorStrings.currentTimeError);
 				return ErrorStrings.currentTimeError;
 			}
 
 			if (typeOfTrade == null || (typeOfTrade != TradeType.BUY && typeOfTrade != TradeType.SELL)) {
+				logger.error(ErrorStrings.tradeTypeFlagError);
 				return ErrorStrings.tradeTypeFlagError;
 			}
 
 			if (tradePrice == null || tradePrice.equals(BigDecimal.ZERO) || tradePrice.compareTo(BigDecimal.ZERO) < 0) {
+				logger.error(ErrorStrings.tradePriceError);
 				return ErrorStrings.tradePriceError;
 			}
 
 			if (tradeList == null) {
+				logger.error(ErrorStrings.tradeListError);
 				return ErrorStrings.tradeListError;
 			}
+			
+			logger.debug("Primary error check ended");
 
 			Trade newTradeRecord = new Trade(stockSymbol, quantity, currentTime, typeOfTrade, tradePrice);
 			Boolean duplicateFlag = new Boolean(false);
 
 			Iterator<Trade> iterator = tradeList.listIterator();
-
+			
+			logger.debug("Checking for Duplicates");
 			/*
 			 * Check for duplicates
 			 */
@@ -197,17 +255,25 @@ public final class StockUtility {
 			}
 
 			if (duplicateFlag) {
+				logger.error(ErrorStrings.duplicateFoundError);
 				return ErrorStrings.duplicateFoundError;
 			}
+			
+			logger.debug("Error Check Ended");
+			logger.info("Adding Trade Record:-  Stock Symbol: "+newTradeRecord.getStockSymbol()+" | Quantity: "+newTradeRecord.getQuantity()+" | Trade Price: "+newTradeRecord.getTradePrice()+" | Trade Type: "+newTradeRecord.getTradeTypeObj()+" | Timestamp: "+newTradeRecord.getTradeTimeStamp()+" |||");
+			logger.debug("Successfully Exiting recordTrade.");
 
 			tradeList.add(newTradeRecord);
 			return tradeList;
 
 		} catch (NullPointerException e) {
+			logger.error(ErrorStrings.nullPointer);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
+			logger.error(ErrorStrings.arithmeticException);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
+			logger.error(ErrorStrings.unknownException);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -222,25 +288,33 @@ public final class StockUtility {
 	 */
 	public static Object volumeWeightedStockPrice(String stockSymbol, Timestamp currentTime, List<Trade> tradeList,
 			VolumeWeightType volumeWeightTypeObj) {
+			
+		logger.debug("Entering volumeWeightedStockPrice");
+		logger.debug("Key Values:-  Stock Symbol: "+stockSymbol+" | Current Time: "+currentTime+" | Volume Weight Type: "+volumeWeightTypeObj+" | Trade List Obj: "+tradeList+"  |||");
 
 		try {
+			
+			logger.debug("Primary error check started");
+			
 			if (stockSymbol == null || stockSymbol.equals(null)) {
-
+				logger.error(ErrorStrings.stockSymbolError);
 				return ErrorStrings.stockSymbolError;
 			}
 			if (volumeWeightTypeObj == null || (volumeWeightTypeObj != VolumeWeightType.FIVE_MINUTES
 					&& volumeWeightTypeObj != VolumeWeightType.TOTAL)) {
-
+				logger.error(ErrorStrings.volumeWeightFlagError);
 				return ErrorStrings.volumeWeightFlagError;
 			}
 			if ((currentTime == null || currentTime.getTime() <= 0) && volumeWeightTypeObj != VolumeWeightType.TOTAL) {
-
+				logger.error(ErrorStrings.currentTimeError);
 				return ErrorStrings.currentTimeError;
 			}
 			if (tradeList == null || tradeList.isEmpty()) {
-
+				logger.error(ErrorStrings.tradeListError);
 				return ErrorStrings.tradeListError;
 			}
+			
+			logger.debug("Primary error check ended");
 
 			BigDecimal totalTradePriceQuantity = new BigDecimal("0.0");
 			BigDecimal totalQuantity = new BigDecimal("0.0");
@@ -255,21 +329,25 @@ public final class StockUtility {
 
 			Iterator<Trade> iterator = tradeList.listIterator();
 			Trade tempTrade = new Trade();
+			
+			logger.debug("Calculation loop started");
 
 			while (iterator.hasNext()) {
 				tempTrade = iterator.next();
 
 				if (tempTrade.getStockSymbol() == null || tempTrade.getStockSymbol().equals(null)) {
-
+					logger.error(ErrorStrings.stockSymbolError);
 					return ErrorStrings.stockSymbolError;
 				}
 
 				if (tempTrade.getStockSymbol().equals(stockSymbol)) {
 
 					if (volumeWeightTypeObj.equals(VolumeWeightType.FIVE_MINUTES)) {
+						
+						logger.debug("Volume Weight Type: Last 5 Minutes");
 
 						if (tempTrade.getTradeTimeStamp() == null || tempTrade.getTradeTimeStamp().getTime() <= 0) {
-
+							logger.error(ErrorStrings.tradeTimeError);
 							return ErrorStrings.tradeTimeError;
 						}
 
@@ -278,13 +356,13 @@ public final class StockUtility {
 
 							if (tempTrade.getQuantity() == null || tempTrade.getQuantity().equals(BigDecimal.ZERO)
 									|| tempTrade.getQuantity().compareTo(BigDecimal.ZERO) < 0) {
-
+								logger.error(ErrorStrings.tradeQuantityError);
 								return ErrorStrings.tradeQuantityError;
 							}
 
 							if (tempTrade.getTradePrice() == null || tempTrade.getTradePrice().equals(BigDecimal.ZERO)
 									|| tempTrade.getTradePrice().compareTo(BigDecimal.ZERO) < 0) {
-
+								logger.error(ErrorStrings.tradePriceError);
 								return ErrorStrings.tradePriceError;
 							}
 
@@ -295,6 +373,8 @@ public final class StockUtility {
 						}
 					}
 					if (volumeWeightTypeObj.equals(VolumeWeightType.TOTAL)) {
+						
+						logger.debug("Volume Weight Type: Overall");
 
 						totalTradePriceQuantity = totalTradePriceQuantity
 								.add(tempTrade.getTradePrice().multiply(tempTrade.getQuantity()));
@@ -306,18 +386,25 @@ public final class StockUtility {
 			}
 
 			if (dataFoundFlag) {
-
+				
 				totalTradePriceQuantity = totalTradePriceQuantity.divide(totalQuantity, 20, BigDecimal.ROUND_HALF_UP);
+				logger.info("Volume Weight Stock Price: "+totalTradePriceQuantity);
+				logger.debug("Successfully Exiting volumeWeightedStockPrice.");
+				
 				return totalTradePriceQuantity;
 			} else {
+				logger.error(ErrorStrings.noRelevantTradesFound);
 				return ErrorStrings.noRelevantTradesFound;
 			}
 
 		} catch (NullPointerException e) {
+			logger.error(ErrorStrings.nullPointer);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
+			logger.error(ErrorStrings.arithmeticException);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
+			logger.error(ErrorStrings.unknownException);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -330,44 +417,61 @@ public final class StockUtility {
 	 * @return
 	 */
 	public static Object geometricMean(List<Stock> stockList, List<Trade> tradeList) {
+		
+		logger.debug("Entering geometricMean");
+		logger.debug("Values Recieved:-  Stock List Obj: "+stockList+" | Trade List Obj: "+tradeList+" |||");
 
 		try {
+			
+			logger.debug("Primary Error Check Started");
+			
 			if (stockList == null || stockList.equals(null) || stockList.isEmpty()) {
-
+				logger.error(ErrorStrings.stockListError);
 				return ErrorStrings.stockListError;
 			}
 
 			if (tradeList == null || tradeList.equals(null) || tradeList.isEmpty()) {
-
+				logger.error(ErrorStrings.tradeListError);
 				return ErrorStrings.tradeListError;
 			}
+			
+			logger.debug("Primary Error Check Ended");
 
 			Iterator<Stock> stockIterator = stockList.listIterator();
 			Stock tempStock = new Stock();
 			BigDecimal geometricMean = new BigDecimal(1);
 			BigDecimal tempDecimal = new BigDecimal(0);
+			
+			logger.debug("Index Value Calculation Started");
 
 			while (stockIterator.hasNext()) {
 				tempStock = stockIterator.next();
 
 				if (tempStock.getStockSymbol() == null || tempStock.getStockSymbol().equals(null)) {
+					logger.error(ErrorStrings.stockSymbolError);
 					return ErrorStrings.stockSymbolError;
 				}
 
 				tempDecimal = (BigDecimal) volumeWeightedStockPrice(tempStock.getStockSymbol(), null, tradeList,
 						VolumeWeightType.TOTAL);
-
+				logger.debug("Stock: "+tempStock.getStockSymbol()+" | Total Volume Weight: "+tempDecimal+"  |||");
 				geometricMean = geometricMean.multiply(tempDecimal);
 			}
 
 			geometricMean = ((BigDecimal) root(10, geometricMean)).setScale(20, BigDecimal.ROUND_HALF_UP);
+			logger.debug("Index Value/Geometric Mean: "+geometricMean);
+			logger.debug("Successfully Exiting geometricMean.");
+			
 			return geometricMean;
 
 		} catch (NullPointerException e) {
+			logger.error(ErrorStrings.nullPointer);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
+			logger.error(ErrorStrings.arithmeticException);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
+			logger.error(ErrorStrings.unknownException);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -378,6 +482,7 @@ public final class StockUtility {
 	 * @return
 	 */
 	static private Object root(final int nthRoot, final BigDecimal targetValue) {
+		logger.debug("Entering Root Calculation");
 		try{
 		if (targetValue.compareTo(BigDecimal.ZERO) < 0) {
 			throw new ArithmeticException("negative argument " + targetValue.toString() + " of root");
@@ -406,10 +511,13 @@ public final class StockUtility {
 		}
 		return s.round(new MathContext(1 + (int) (Math.log10(Math.abs(0.5 / eps)))));
 		}catch (NullPointerException e) {
+			logger.error(ErrorStrings.nullPointer);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
+			logger.error(ErrorStrings.arithmeticException);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
+			logger.error(ErrorStrings.unknownException);
 			return ErrorStrings.unknownException;
 		}
 	}
