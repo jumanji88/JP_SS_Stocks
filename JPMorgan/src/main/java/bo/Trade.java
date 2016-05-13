@@ -5,7 +5,6 @@ package main.java.bo;
 
 import java.math.*;
 import java.sql.*;
-import java.util.*;
 
 import main.java.resources.TradeType;
 

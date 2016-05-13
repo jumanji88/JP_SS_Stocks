@@ -198,7 +198,7 @@ public final class StockUtility {
 
 		try {
 			logger.debug("Entering recordTrade.");
-			logger.debug("Key Values:-  Stock Symbol: "+stockSymbol+" | Quantity: "+quantity+" | Trade Price: "+tradePrice+" | Current Time: "+currentTime+" | Type of Trade: "+typeOfTrade+" | Trade List Obj: "+tradeList+"  |||");
+			logger.debug("Key Values:-  Stock Symbol: "+stockSymbol+" | Quantity: "+quantity+" | Trade Price: "+tradePrice+" | Timestamp: "+currentTime+" | Type of Trade: "+typeOfTrade+" | Trade List Obj: "+tradeList+"  |||");
 			logger.debug("Primary error check started");
 
 			/*
@@ -260,7 +260,7 @@ public final class StockUtility {
 			}
 			
 			logger.debug("Error Check Ended");
-			logger.info("Adding Trade Record:-  Stock Symbol: "+newTradeRecord.getStockSymbol()+" | Quantity: "+newTradeRecord.getQuantity()+" | Trade Price: "+newTradeRecord.getTradePrice()+" | Trade Type: "+newTradeRecord.getTradeTypeObj()+" | Timestamp: "+newTradeRecord.getTradeTimeStamp()+" |||");
+			logger.info("Adding Trade Record:-  Stock Symbol: "+newTradeRecord.getStockSymbol()+" | Quantity: "+newTradeRecord.getQuantity()+" | Trade Price: "+newTradeRecord.getTradePrice()+" | Type of Trade: "+newTradeRecord.getTradeTypeObj()+" | Timestamp: "+newTradeRecord.getTradeTimeStamp()+" |||");
 			logger.debug("Successfully Exiting recordTrade.");
 
 			tradeList.add(newTradeRecord);
@@ -290,7 +290,7 @@ public final class StockUtility {
 			VolumeWeightType volumeWeightTypeObj) {
 			
 		logger.debug("Entering volumeWeightedStockPrice");
-		logger.debug("Key Values:-  Stock Symbol: "+stockSymbol+" | Current Time: "+currentTime+" | Volume Weight Type: "+volumeWeightTypeObj+" | Trade List Obj: "+tradeList+"  |||");
+		logger.debug("Key Values:-  Stock Symbol: "+stockSymbol+" | Timestamp: "+currentTime+" | Volume Weight Type: "+volumeWeightTypeObj+" | Trade List Obj: "+tradeList+"  |||");
 
 		try {
 			
@@ -419,7 +419,7 @@ public final class StockUtility {
 	public static Object geometricMean(List<Stock> stockList, List<Trade> tradeList) {
 		
 		logger.debug("Entering geometricMean");
-		logger.debug("Values Recieved:-  Stock List Obj: "+stockList+" | Trade List Obj: "+tradeList+" |||");
+		logger.debug("Values Recieved:-  Stock List Obj: "+stockList+" | Trade List Obj: "+tradeList+"  |||");
 
 		try {
 			
