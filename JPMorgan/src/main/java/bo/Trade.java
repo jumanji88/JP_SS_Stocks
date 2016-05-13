@@ -60,7 +60,7 @@ public class Trade {
 	        return false;
 	    }
 
-		Trade that = (Trade) testTrade;
+		Trade that = testTrade;
 
 	    // Custom equality check here.
 	    return (this.stockSymbol.equals(that.stockSymbol)
