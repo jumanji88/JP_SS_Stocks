@@ -3,8 +3,8 @@
  */
 package main.java.bo;
 
-import java.math.*;
-import java.sql.*;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 import main.java.resources.TradeType;
 

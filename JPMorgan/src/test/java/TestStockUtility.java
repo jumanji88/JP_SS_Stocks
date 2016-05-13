@@ -1,13 +1,16 @@
 package test.java;
 
-import java.math.*;
-import java.sql.*;
-import java.util.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.Assert.*;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,7 +31,7 @@ public class TestStockUtility {
 
 	static List<Trade> tradeList;
 	static List<Stock> stockList;
-	private static final Logger logger = LogManager.getLogger(StockUtility.class);
+	private static final Logger logger = (Logger) LogManager.getLogger(TestStockUtility.class);
 
 	/*
 	 * Populate Stock and Trade lists with random data

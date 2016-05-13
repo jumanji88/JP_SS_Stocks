@@ -9,7 +9,8 @@ import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import main.java.bo.Stock;
 import main.java.bo.Trade;
