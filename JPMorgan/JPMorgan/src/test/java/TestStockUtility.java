@@ -45,16 +45,16 @@ public class TestStockUtility {
 		stockDetails = new Stock("TEA", StockType.COMMON, BigDecimal.valueOf(0), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(100));
 		stockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.POP, StockType.COMMON, BigDecimal.valueOf(8), BigDecimal.valueOf(0),
+		stockDetails = new Stock("POP", StockType.COMMON, BigDecimal.valueOf(8), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(100));
 		stockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.ALE, StockType.COMMON, BigDecimal.valueOf(23), BigDecimal.valueOf(0),
+		stockDetails = new Stock("ALE", StockType.COMMON, BigDecimal.valueOf(23), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(60));
 		stockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.GIN, StockType.PREFERRED, BigDecimal.valueOf(8), BigDecimal.valueOf(2),
+		stockDetails = new Stock("GIN", StockType.PREFERRED, BigDecimal.valueOf(8), BigDecimal.valueOf(2),
 				BigDecimal.valueOf(100));
 		stockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.JOE, StockType.COMMON, BigDecimal.valueOf(13), BigDecimal.valueOf(0),
+		stockDetails = new Stock("JOE", StockType.COMMON, BigDecimal.valueOf(13), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(250));
 		stockList.add(stockDetails);
 		stockDetails = new Stock("COFF", StockType.COMMON, BigDecimal.valueOf(1), BigDecimal.valueOf(13),
@@ -73,22 +73,22 @@ public class TestStockUtility {
 				BigDecimal.valueOf(470));
 		stockList.add(stockDetails);
 
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(1727767), Timestamp.valueOf("2016-05-12 10:17:21.595"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(1727767), Timestamp.valueOf("2016-05-12 10:17:21.595"),
 				TradeType.SELL, BigDecimal.valueOf(627));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(5973612), Timestamp.valueOf("2016-05-12 10:15:40.406"),
 				TradeType.SELL, BigDecimal.valueOf(1163));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(1963444), Timestamp.valueOf("2016-05-12 10:16:11.471"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(1963444), Timestamp.valueOf("2016-05-12 10:16:11.471"),
 				TradeType.SELL, BigDecimal.valueOf(1996));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(4619390), Timestamp.valueOf("2016-05-12 10:16:26.95"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(4619390), Timestamp.valueOf("2016-05-12 10:16:26.95"),
 				TradeType.SELL, BigDecimal.valueOf(1418));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(3230468), Timestamp.valueOf("2016-05-12 10:16:53.987"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(3230468), Timestamp.valueOf("2016-05-12 10:16:53.987"),
 				TradeType.SELL, BigDecimal.valueOf(800));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(7981112), Timestamp.valueOf("2016-05-12 10:18:23.575"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(7981112), Timestamp.valueOf("2016-05-12 10:18:23.575"),
 				TradeType.SELL, BigDecimal.valueOf(94));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(5419655), Timestamp.valueOf("2016-05-12 10:20:59.736"),
@@ -97,40 +97,40 @@ public class TestStockUtility {
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(563298), Timestamp.valueOf("2016-05-12 10:11:38.918"),
 				TradeType.SELL, BigDecimal.valueOf(1859));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6457256), Timestamp.valueOf("2016-05-12 10:15:37.90"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6457256), Timestamp.valueOf("2016-05-12 10:15:37.90"),
 				TradeType.BUY, BigDecimal.valueOf(530));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(1284783), Timestamp.valueOf("2016-05-12 10:15:15.920"),
 				TradeType.BUY, BigDecimal.valueOf(340));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(282943), Timestamp.valueOf("2016-05-12 10:14:24.887"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(282943), Timestamp.valueOf("2016-05-12 10:14:24.887"),
 				TradeType.SELL, BigDecimal.valueOf(76));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(2074092), Timestamp.valueOf("2016-05-12 10:20:45.558"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(2074092), Timestamp.valueOf("2016-05-12 10:20:45.558"),
 				TradeType.BUY, BigDecimal.valueOf(951));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(3761788), Timestamp.valueOf("2016-05-12 10:19:19.125"),
 				TradeType.BUY, BigDecimal.valueOf(1948));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(1324715), Timestamp.valueOf("2016-05-12 10:15:55.728"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(1324715), Timestamp.valueOf("2016-05-12 10:15:55.728"),
 				TradeType.SELL, BigDecimal.valueOf(1036));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(148297), Timestamp.valueOf("2016-05-12 10:10:58.431"),
 				TradeType.SELL, BigDecimal.valueOf(1930));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(6808492), Timestamp.valueOf("2016-05-12 10:18:50.410"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(6808492), Timestamp.valueOf("2016-05-12 10:18:50.410"),
 				TradeType.SELL, BigDecimal.valueOf(1062));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(2811584), Timestamp.valueOf("2016-05-12 10:10:45.842"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(2811584), Timestamp.valueOf("2016-05-12 10:10:45.842"),
 				TradeType.SELL, BigDecimal.valueOf(554));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(4002849), Timestamp.valueOf("2016-05-12 10:15:8.283"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(4002849), Timestamp.valueOf("2016-05-12 10:15:8.283"),
 				TradeType.SELL, BigDecimal.valueOf(1805));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(4341988), Timestamp.valueOf("2016-05-12 10:16:58.320"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(4341988), Timestamp.valueOf("2016-05-12 10:16:58.320"),
 				TradeType.SELL, BigDecimal.valueOf(322));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6026822), Timestamp.valueOf("2016-05-12 10:18:32.506"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6026822), Timestamp.valueOf("2016-05-12 10:18:32.506"),
 				TradeType.SELL, BigDecimal.valueOf(1141));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(6667852), Timestamp.valueOf("2016-05-12 10:20:2.812"),
@@ -142,7 +142,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(7219828), Timestamp.valueOf("2016-05-12 10:13:51.656"),
 				TradeType.BUY, BigDecimal.valueOf(383));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(895148), Timestamp.valueOf("2016-05-12 10:12:41.79"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(895148), Timestamp.valueOf("2016-05-12 10:12:41.79"),
 				TradeType.SELL, BigDecimal.valueOf(1885));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(441269), Timestamp.valueOf("2016-05-12 10:19:27.428"),
@@ -169,13 +169,13 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(8867293), Timestamp.valueOf("2016-05-12 10:16:52.595"),
 				TradeType.BUY, BigDecimal.valueOf(529));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(4682118), Timestamp.valueOf("2016-05-12 10:13:2.947"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(4682118), Timestamp.valueOf("2016-05-12 10:13:2.947"),
 				TradeType.SELL, BigDecimal.valueOf(1002));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6379867), Timestamp.valueOf("2016-05-12 10:19:22.193"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6379867), Timestamp.valueOf("2016-05-12 10:19:22.193"),
 				TradeType.BUY, BigDecimal.valueOf(1938));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(2507192), Timestamp.valueOf("2016-05-12 10:12:55.499"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(2507192), Timestamp.valueOf("2016-05-12 10:12:55.499"),
 				TradeType.SELL, BigDecimal.valueOf(1951));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(6038258), Timestamp.valueOf("2016-05-12 10:13:39.378"),
@@ -184,7 +184,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(2406943), Timestamp.valueOf("2016-05-12 10:10:2.507"),
 				TradeType.SELL, BigDecimal.valueOf(1294));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(2903430), Timestamp.valueOf("2016-05-12 10:17:23.175"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(2903430), Timestamp.valueOf("2016-05-12 10:17:23.175"),
 				TradeType.SELL, BigDecimal.valueOf(1039));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7020694), Timestamp.valueOf("2016-05-12 10:10:40.985"),
@@ -202,7 +202,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(1097718), Timestamp.valueOf("2016-05-12 10:15:45.278"),
 				TradeType.SELL, BigDecimal.valueOf(798));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(1084410), Timestamp.valueOf("2016-05-12 10:13:53.862"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(1084410), Timestamp.valueOf("2016-05-12 10:13:53.862"),
 				TradeType.SELL, BigDecimal.valueOf(1626));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(3675453), Timestamp.valueOf("2016-05-12 10:14:34.861"),
@@ -220,13 +220,13 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(5959893), Timestamp.valueOf("2016-05-12 10:10:44.479"),
 				TradeType.SELL, BigDecimal.valueOf(143));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(6235217), Timestamp.valueOf("2016-05-12 10:10:49.406"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(6235217), Timestamp.valueOf("2016-05-12 10:10:49.406"),
 				TradeType.SELL, BigDecimal.valueOf(1228));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9503683), Timestamp.valueOf("2016-05-12 10:11:38.892"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9503683), Timestamp.valueOf("2016-05-12 10:11:38.892"),
 				TradeType.BUY, BigDecimal.valueOf(174));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(4598776), Timestamp.valueOf("2016-05-12 10:20:11.501"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(4598776), Timestamp.valueOf("2016-05-12 10:20:11.501"),
 				TradeType.SELL, BigDecimal.valueOf(76));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(3857546), Timestamp.valueOf("2016-05-12 10:16:58.56"),
@@ -241,10 +241,10 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(1278778), Timestamp.valueOf("2016-05-12 10:13:13.615"),
 				TradeType.BUY, BigDecimal.valueOf(1288));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(3207832), Timestamp.valueOf("2016-05-12 10:17:30.478"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(3207832), Timestamp.valueOf("2016-05-12 10:17:30.478"),
 				TradeType.BUY, BigDecimal.valueOf(1311));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(7351319), Timestamp.valueOf("2016-05-12 10:11:56.560"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(7351319), Timestamp.valueOf("2016-05-12 10:11:56.560"),
 				TradeType.BUY, BigDecimal.valueOf(1691));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(8921900), Timestamp.valueOf("2016-05-12 10:11:15.384"),
@@ -253,13 +253,13 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(6267557), Timestamp.valueOf("2016-05-12 10:12:39.178"),
 				TradeType.SELL, BigDecimal.valueOf(473));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(7117122), Timestamp.valueOf("2016-05-12 10:14:35.410"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(7117122), Timestamp.valueOf("2016-05-12 10:14:35.410"),
 				TradeType.SELL, BigDecimal.valueOf(807));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(6490833), Timestamp.valueOf("2016-05-12 10:17:49.525"),
 				TradeType.SELL, BigDecimal.valueOf(249));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(5903563), Timestamp.valueOf("2016-05-12 10:18:59.348"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(5903563), Timestamp.valueOf("2016-05-12 10:18:59.348"),
 				TradeType.BUY, BigDecimal.valueOf(108));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(6729518), Timestamp.valueOf("2016-05-12 10:17:55.152"),
@@ -271,7 +271,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(6230845), Timestamp.valueOf("2016-05-12 10:11:15.492"),
 				TradeType.SELL, BigDecimal.valueOf(743));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(9163592), Timestamp.valueOf("2016-05-12 10:18:42.65"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(9163592), Timestamp.valueOf("2016-05-12 10:18:42.65"),
 				TradeType.SELL, BigDecimal.valueOf(140));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(6933692), Timestamp.valueOf("2016-05-12 10:12:55.678"),
@@ -280,7 +280,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(2883751), Timestamp.valueOf("2016-05-12 10:19:15.627"),
 				TradeType.SELL, BigDecimal.valueOf(136));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(714563), Timestamp.valueOf("2016-05-12 10:19:0.897"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(714563), Timestamp.valueOf("2016-05-12 10:19:0.897"),
 				TradeType.SELL, BigDecimal.valueOf(1531));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(8593994), Timestamp.valueOf("2016-05-12 10:18:18.69"),
@@ -295,28 +295,28 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(4786313), Timestamp.valueOf("2016-05-12 10:12:54.401"),
 				TradeType.SELL, BigDecimal.valueOf(47));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(6411300), Timestamp.valueOf("2016-05-12 10:17:54.609"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(6411300), Timestamp.valueOf("2016-05-12 10:17:54.609"),
 				TradeType.BUY, BigDecimal.valueOf(1355));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(1356447), Timestamp.valueOf("2016-05-12 10:17:46.307"),
 				TradeType.BUY, BigDecimal.valueOf(1656));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(3581922), Timestamp.valueOf("2016-05-12 10:16:4.883"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(3581922), Timestamp.valueOf("2016-05-12 10:16:4.883"),
 				TradeType.SELL, BigDecimal.valueOf(789));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(2601751), Timestamp.valueOf("2016-05-12 10:13:35.209"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(2601751), Timestamp.valueOf("2016-05-12 10:13:35.209"),
 				TradeType.SELL, BigDecimal.valueOf(207));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(9331741), Timestamp.valueOf("2016-05-12 10:14:0.395"),
 				TradeType.SELL, BigDecimal.valueOf(1289));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(6740101), Timestamp.valueOf("2016-05-12 10:20:40.69"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(6740101), Timestamp.valueOf("2016-05-12 10:20:40.69"),
 				TradeType.SELL, BigDecimal.valueOf(592));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(6545200), Timestamp.valueOf("2016-05-12 10:17:36.813"),
 				TradeType.SELL, BigDecimal.valueOf(1683));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(7889259), Timestamp.valueOf("2016-05-12 10:15:51.803"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(7889259), Timestamp.valueOf("2016-05-12 10:15:51.803"),
 				TradeType.SELL, BigDecimal.valueOf(1044));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(3600458), Timestamp.valueOf("2016-05-12 10:10:39.798"),
@@ -334,7 +334,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(6115446), Timestamp.valueOf("2016-05-12 10:20:15.597"),
 				TradeType.BUY, BigDecimal.valueOf(699));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(487197), Timestamp.valueOf("2016-05-12 10:16:57.245"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(487197), Timestamp.valueOf("2016-05-12 10:16:57.245"),
 				TradeType.BUY, BigDecimal.valueOf(1428));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(4922249), Timestamp.valueOf("2016-05-12 10:16:0.607"),
@@ -346,10 +346,10 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(4769687), Timestamp.valueOf("2016-05-12 10:19:2.908"),
 				TradeType.SELL, BigDecimal.valueOf(1329));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5837386), Timestamp.valueOf("2016-05-12 10:13:8.773"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5837386), Timestamp.valueOf("2016-05-12 10:13:8.773"),
 				TradeType.SELL, BigDecimal.valueOf(1016));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5229303), Timestamp.valueOf("2016-05-12 10:16:56.237"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5229303), Timestamp.valueOf("2016-05-12 10:16:56.237"),
 				TradeType.SELL, BigDecimal.valueOf(755));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(3509099), Timestamp.valueOf("2016-05-12 10:14:4.983"),
@@ -358,7 +358,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(3928957), Timestamp.valueOf("2016-05-12 10:10:20.357"),
 				TradeType.SELL, BigDecimal.valueOf(248));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(5590394), Timestamp.valueOf("2016-05-12 10:17:14.856"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(5590394), Timestamp.valueOf("2016-05-12 10:17:14.856"),
 				TradeType.SELL, BigDecimal.valueOf(1823));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(4097126), Timestamp.valueOf("2016-05-12 10:20:59.510"),
@@ -367,22 +367,22 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(2375580), Timestamp.valueOf("2016-05-12 10:17:2.157"),
 				TradeType.BUY, BigDecimal.valueOf(1305));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(4665913), Timestamp.valueOf("2016-05-12 10:17:25.898"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(4665913), Timestamp.valueOf("2016-05-12 10:17:25.898"),
 				TradeType.SELL, BigDecimal.valueOf(1225));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6164652), Timestamp.valueOf("2016-05-12 10:20:20.551"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6164652), Timestamp.valueOf("2016-05-12 10:20:20.551"),
 				TradeType.SELL, BigDecimal.valueOf(336));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(9646356), Timestamp.valueOf("2016-05-12 10:14:29.21"),
 				TradeType.SELL, BigDecimal.valueOf(514));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(7656676), Timestamp.valueOf("2016-05-12 10:14:15.33"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(7656676), Timestamp.valueOf("2016-05-12 10:14:15.33"),
 				TradeType.BUY, BigDecimal.valueOf(1301));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(3794936), Timestamp.valueOf("2016-05-12 10:16:51.757"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(3794936), Timestamp.valueOf("2016-05-12 10:16:51.757"),
 				TradeType.SELL, BigDecimal.valueOf(765));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(8523778), Timestamp.valueOf("2016-05-12 10:12:49.372"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(8523778), Timestamp.valueOf("2016-05-12 10:12:49.372"),
 				TradeType.BUY, BigDecimal.valueOf(370));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(43259), Timestamp.valueOf("2016-05-12 10:14:13.551"),
@@ -391,25 +391,25 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7371953), Timestamp.valueOf("2016-05-12 10:19:8.986"),
 				TradeType.SELL, BigDecimal.valueOf(890));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(4904716), Timestamp.valueOf("2016-05-12 10:16:13.229"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(4904716), Timestamp.valueOf("2016-05-12 10:16:13.229"),
 				TradeType.SELL, BigDecimal.valueOf(745));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(9588444), Timestamp.valueOf("2016-05-12 10:14:30.966"),
 				TradeType.BUY, BigDecimal.valueOf(977));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8226066), Timestamp.valueOf("2016-05-12 10:17:23.449"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8226066), Timestamp.valueOf("2016-05-12 10:17:23.449"),
 				TradeType.BUY, BigDecimal.valueOf(1116));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8341867), Timestamp.valueOf("2016-05-12 10:14:30.353"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8341867), Timestamp.valueOf("2016-05-12 10:14:30.353"),
 				TradeType.SELL, BigDecimal.valueOf(1557));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(2035940), Timestamp.valueOf("2016-05-12 10:20:0.939"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(2035940), Timestamp.valueOf("2016-05-12 10:20:0.939"),
 				TradeType.BUY, BigDecimal.valueOf(608));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(7534787), Timestamp.valueOf("2016-05-12 10:18:35.603"),
 				TradeType.BUY, BigDecimal.valueOf(1809));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(1887795), Timestamp.valueOf("2016-05-12 10:13:10.373"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(1887795), Timestamp.valueOf("2016-05-12 10:13:10.373"),
 				TradeType.SELL, BigDecimal.valueOf(1215));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(92571), Timestamp.valueOf("2016-05-12 10:11:51.498"),
@@ -424,7 +424,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(225290), Timestamp.valueOf("2016-05-12 10:12:45.959"),
 				TradeType.BUY, BigDecimal.valueOf(297));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(2269539), Timestamp.valueOf("2016-05-12 10:20:25.788"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(2269539), Timestamp.valueOf("2016-05-12 10:20:25.788"),
 				TradeType.BUY, BigDecimal.valueOf(1740));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(1257550), Timestamp.valueOf("2016-05-12 10:16:32.465"),
@@ -439,16 +439,16 @@ public class TestStockUtility {
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(9110798), Timestamp.valueOf("2016-05-12 10:15:11.635"),
 				TradeType.SELL, BigDecimal.valueOf(1742));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(3264200), Timestamp.valueOf("2016-05-12 10:12:48.765"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(3264200), Timestamp.valueOf("2016-05-12 10:12:48.765"),
 				TradeType.SELL, BigDecimal.valueOf(1245));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(5905717), Timestamp.valueOf("2016-05-12 10:14:36.577"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(5905717), Timestamp.valueOf("2016-05-12 10:14:36.577"),
 				TradeType.SELL, BigDecimal.valueOf(1827));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(6848807), Timestamp.valueOf("2016-05-12 10:17:50.164"),
 				TradeType.BUY, BigDecimal.valueOf(150));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9537097), Timestamp.valueOf("2016-05-12 10:11:30.215"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9537097), Timestamp.valueOf("2016-05-12 10:11:30.215"),
 				TradeType.BUY, BigDecimal.valueOf(474));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(2866043), Timestamp.valueOf("2016-05-12 10:17:11.215"),
@@ -460,7 +460,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(4348363), Timestamp.valueOf("2016-05-12 10:15:50.589"),
 				TradeType.BUY, BigDecimal.valueOf(127));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(4271911), Timestamp.valueOf("2016-05-12 10:14:27.77"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(4271911), Timestamp.valueOf("2016-05-12 10:14:27.77"),
 				TradeType.BUY, BigDecimal.valueOf(361));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(2261593), Timestamp.valueOf("2016-05-12 10:12:28.944"),
@@ -472,7 +472,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7412279), Timestamp.valueOf("2016-05-12 10:20:6.687"),
 				TradeType.BUY, BigDecimal.valueOf(693));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(1304876), Timestamp.valueOf("2016-05-12 10:16:4.689"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(1304876), Timestamp.valueOf("2016-05-12 10:16:4.689"),
 				TradeType.BUY, BigDecimal.valueOf(881));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(2206513), Timestamp.valueOf("2016-05-12 10:14:18.748"),
@@ -481,7 +481,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(6895608), Timestamp.valueOf("2016-05-12 10:10:40.830"),
 				TradeType.BUY, BigDecimal.valueOf(1468));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(9282799), Timestamp.valueOf("2016-05-12 10:10:1.276"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(9282799), Timestamp.valueOf("2016-05-12 10:10:1.276"),
 				TradeType.SELL, BigDecimal.valueOf(365));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(4633062), Timestamp.valueOf("2016-05-12 10:20:52.867"),
@@ -496,16 +496,16 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(5117422), Timestamp.valueOf("2016-05-12 10:16:45.145"),
 				TradeType.BUY, BigDecimal.valueOf(177));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(6677379), Timestamp.valueOf("2016-05-12 10:18:40.990"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(6677379), Timestamp.valueOf("2016-05-12 10:18:40.990"),
 				TradeType.SELL, BigDecimal.valueOf(1444));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(3292478), Timestamp.valueOf("2016-05-12 10:10:2.886"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(3292478), Timestamp.valueOf("2016-05-12 10:10:2.886"),
 				TradeType.BUY, BigDecimal.valueOf(1647));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(8597323), Timestamp.valueOf("2016-05-12 10:20:19.834"),
 				TradeType.SELL, BigDecimal.valueOf(550));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(4086365), Timestamp.valueOf("2016-05-12 10:13:9.232"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(4086365), Timestamp.valueOf("2016-05-12 10:13:9.232"),
 				TradeType.SELL, BigDecimal.valueOf(448));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(5486770), Timestamp.valueOf("2016-05-12 10:16:25.412"),
@@ -520,25 +520,25 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(1249112), Timestamp.valueOf("2016-05-12 10:18:34.765"),
 				TradeType.BUY, BigDecimal.valueOf(1590));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(1347633), Timestamp.valueOf("2016-05-12 10:10:38.954"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(1347633), Timestamp.valueOf("2016-05-12 10:10:38.954"),
 				TradeType.BUY, BigDecimal.valueOf(1636));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(8430353), Timestamp.valueOf("2016-05-12 10:15:29.142"),
 				TradeType.BUY, BigDecimal.valueOf(961));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6545340), Timestamp.valueOf("2016-05-12 10:20:27.161"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6545340), Timestamp.valueOf("2016-05-12 10:20:27.161"),
 				TradeType.BUY, BigDecimal.valueOf(1556));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(2839557), Timestamp.valueOf("2016-05-12 10:20:26.884"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(2839557), Timestamp.valueOf("2016-05-12 10:20:26.884"),
 				TradeType.BUY, BigDecimal.valueOf(1842));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(3181305), Timestamp.valueOf("2016-05-12 10:20:18.707"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(3181305), Timestamp.valueOf("2016-05-12 10:20:18.707"),
 				TradeType.BUY, BigDecimal.valueOf(1585));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(2771876), Timestamp.valueOf("2016-05-12 10:15:57.532"),
 				TradeType.SELL, BigDecimal.valueOf(1047));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(4662350), Timestamp.valueOf("2016-05-12 10:17:17.783"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(4662350), Timestamp.valueOf("2016-05-12 10:17:17.783"),
 				TradeType.BUY, BigDecimal.valueOf(5));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(1429581), Timestamp.valueOf("2016-05-12 10:20:51.879"),
@@ -547,10 +547,10 @@ public class TestStockUtility {
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(3973989), Timestamp.valueOf("2016-05-12 10:10:11.656"),
 				TradeType.BUY, BigDecimal.valueOf(483));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(1528404), Timestamp.valueOf("2016-05-12 10:11:32.856"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(1528404), Timestamp.valueOf("2016-05-12 10:11:32.856"),
 				TradeType.SELL, BigDecimal.valueOf(1142));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(8324967), Timestamp.valueOf("2016-05-12 10:12:23.343"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(8324967), Timestamp.valueOf("2016-05-12 10:12:23.343"),
 				TradeType.SELL, BigDecimal.valueOf(738));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(6648011), Timestamp.valueOf("2016-05-12 10:16:56.276"),
@@ -559,10 +559,10 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(428833), Timestamp.valueOf("2016-05-12 10:19:55.376"),
 				TradeType.BUY, BigDecimal.valueOf(1449));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5033601), Timestamp.valueOf("2016-05-12 10:16:49.443"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5033601), Timestamp.valueOf("2016-05-12 10:16:49.443"),
 				TradeType.SELL, BigDecimal.valueOf(696));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(8991230), Timestamp.valueOf("2016-05-12 10:20:44.377"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(8991230), Timestamp.valueOf("2016-05-12 10:20:44.377"),
 				TradeType.BUY, BigDecimal.valueOf(1574));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(4892535), Timestamp.valueOf("2016-05-12 10:19:18.274"),
@@ -574,7 +574,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(9271804), Timestamp.valueOf("2016-05-12 10:18:23.458"),
 				TradeType.SELL, BigDecimal.valueOf(1985));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(6565392), Timestamp.valueOf("2016-05-12 10:18:42.317"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(6565392), Timestamp.valueOf("2016-05-12 10:18:42.317"),
 				TradeType.SELL, BigDecimal.valueOf(1560));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(8906929), Timestamp.valueOf("2016-05-12 10:15:43.200"),
@@ -586,16 +586,16 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(9567109), Timestamp.valueOf("2016-05-12 10:10:15.355"),
 				TradeType.BUY, BigDecimal.valueOf(457));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9164239), Timestamp.valueOf("2016-05-12 10:18:21.848"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9164239), Timestamp.valueOf("2016-05-12 10:18:21.848"),
 				TradeType.SELL, BigDecimal.valueOf(667));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8381522), Timestamp.valueOf("2016-05-12 10:17:10.654"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8381522), Timestamp.valueOf("2016-05-12 10:17:10.654"),
 				TradeType.BUY, BigDecimal.valueOf(781));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(3267038), Timestamp.valueOf("2016-05-12 10:10:35.448"),
 				TradeType.SELL, BigDecimal.valueOf(149));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(2900029), Timestamp.valueOf("2016-05-12 10:13:12.386"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(2900029), Timestamp.valueOf("2016-05-12 10:13:12.386"),
 				TradeType.BUY, BigDecimal.valueOf(1386));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(3170153), Timestamp.valueOf("2016-05-12 10:13:28.528"),
@@ -604,7 +604,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(4214571), Timestamp.valueOf("2016-05-12 10:18:4.143"),
 				TradeType.SELL, BigDecimal.valueOf(411));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5865105), Timestamp.valueOf("2016-05-12 10:13:4.29"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5865105), Timestamp.valueOf("2016-05-12 10:13:4.29"),
 				TradeType.SELL, BigDecimal.valueOf(404));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(8590479), Timestamp.valueOf("2016-05-12 10:12:13.550"),
@@ -616,19 +616,19 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(3111524), Timestamp.valueOf("2016-05-12 10:13:3.386"),
 				TradeType.BUY, BigDecimal.valueOf(1871));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(3809724), Timestamp.valueOf("2016-05-12 10:14:15.211"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(3809724), Timestamp.valueOf("2016-05-12 10:14:15.211"),
 				TradeType.SELL, BigDecimal.valueOf(1297));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7039350), Timestamp.valueOf("2016-05-12 10:11:34.910"),
 				TradeType.BUY, BigDecimal.valueOf(1275));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(8925985), Timestamp.valueOf("2016-05-12 10:20:49.134"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(8925985), Timestamp.valueOf("2016-05-12 10:20:49.134"),
 				TradeType.SELL, BigDecimal.valueOf(325));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9799037), Timestamp.valueOf("2016-05-12 10:12:1.710"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9799037), Timestamp.valueOf("2016-05-12 10:12:1.710"),
 				TradeType.BUY, BigDecimal.valueOf(428));
 		tradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(9468940), Timestamp.valueOf("2016-05-12 10:16:8.808"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(9468940), Timestamp.valueOf("2016-05-12 10:16:8.808"),
 				TradeType.SELL, BigDecimal.valueOf(253));
 		tradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(3245213), Timestamp.valueOf("2016-05-12 10:14:14.480"),
@@ -757,7 +757,7 @@ public class TestStockUtility {
 	public void testDividendYield_GIN() throws Exception {
 		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
 		assertEquals("0.05405405405405405406", StockUtility
-				.dividendYieldOrPERatio(BigDecimal.valueOf(37), LoggerStrings.GIN, stockList, StockFunctionType.DIVIDEND_YIELD)
+				.dividendYieldOrPERatio(BigDecimal.valueOf(37), "GIN", stockList, StockFunctionType.DIVIDEND_YIELD)
 				.toString());
 		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
@@ -1320,7 +1320,7 @@ public class TestStockUtility {
 	@Test
 	public void testRecordTrade_Duplicate() throws Exception {
 		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
-		assertEquals(ErrorStrings.duplicateFoundError, StockUtility.recordTrade(LoggerStrings.ALE, BigDecimal.valueOf(7981112),
+		assertEquals(ErrorStrings.duplicateFoundError, StockUtility.recordTrade("ALE", BigDecimal.valueOf(7981112),
 				Timestamp.valueOf("2016-05-12 10:18:23.575"), TradeType.SELL, BigDecimal.valueOf(94), tradeList));
 		logger.debug("SUCCESS: "+new Object(){}.getClass().getEnclosingMethod().getName());
 	}
@@ -1398,7 +1398,7 @@ public class TestStockUtility {
 	@Test
 	public void testVolumeWeightedStockPrice_ALE() throws Exception {
 		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
-		String stockSymbol = LoggerStrings.ALE;
+		String stockSymbol = "ALE";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals("919.73255553122342814958",
 				StockUtility
@@ -1413,7 +1413,7 @@ public class TestStockUtility {
 	@Test
 	public void testVolumeWeightedStockPrice_JOE() throws Exception {
 		logger.debug("BEGIN: "+new Object(){}.getClass().getEnclosingMethod().getName());
-		String stockSymbol = LoggerStrings.JOE;
+		String stockSymbol = "JOE";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals("1085.92154356063432375174",
 				StockUtility
@@ -1456,10 +1456,10 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(4769687), Timestamp.valueOf("2016-05-12 10:19:2.908"),
 				TradeType.SELL, BigDecimal.valueOf(1329));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5837386), Timestamp.valueOf("2016-05-12 10:13:8.773"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5837386), Timestamp.valueOf("2016-05-12 10:13:8.773"),
 				TradeType.SELL, BigDecimal.valueOf(1016));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5229303), Timestamp.valueOf("2016-05-12 10:16:56.237"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5229303), Timestamp.valueOf("2016-05-12 10:16:56.237"),
 				TradeType.SELL, BigDecimal.valueOf(755));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(3509099), Timestamp.valueOf("2016-05-12 10:14:4.983"),
@@ -1468,7 +1468,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(3928957), Timestamp.valueOf("2016-05-12 10:10:20.357"),
 				TradeType.SELL, BigDecimal.valueOf(248));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(5590394), Timestamp.valueOf("2016-05-12 10:17:14.856"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(5590394), Timestamp.valueOf("2016-05-12 10:17:14.856"),
 				TradeType.SELL, BigDecimal.valueOf(1823));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(4097126), Timestamp.valueOf("2016-05-12 10:20:59.510"),
@@ -1500,13 +1500,13 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(5959893), Timestamp.valueOf("2016-05-12 10:10:44.479"),
 				TradeType.SELL, BigDecimal.valueOf(143));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(6235217), Timestamp.valueOf("2016-05-12 10:10:49.406"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(6235217), Timestamp.valueOf("2016-05-12 10:10:49.406"),
 				TradeType.SELL, BigDecimal.valueOf(1228));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9503683), Timestamp.valueOf("2016-05-12 10:11:38.892"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9503683), Timestamp.valueOf("2016-05-12 10:11:38.892"),
 				TradeType.BUY, BigDecimal.valueOf(174));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(4598776), Timestamp.valueOf("2016-05-12 10:20:11.501"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(4598776), Timestamp.valueOf("2016-05-12 10:20:11.501"),
 				TradeType.SELL, BigDecimal.valueOf(76));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.valueOf(3857546), Timestamp.valueOf("2016-05-12 10:16:58.56"),
@@ -1521,7 +1521,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(1278778), Timestamp.valueOf("2016-05-12 10:13:13.615"),
 				TradeType.BUY, BigDecimal.valueOf(1288));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(3207832), Timestamp.valueOf("2016-05-12 10:17:30.478"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(3207832), Timestamp.valueOf("2016-05-12 10:17:30.478"),
 				TradeType.BUY, BigDecimal.valueOf(1311));
 		faultyTradeList.add(tradeDetails);
 
@@ -1545,7 +1545,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(6848807), Timestamp.valueOf("2016-05-12 10:17:50.164"),
 				TradeType.BUY, BigDecimal.valueOf(150));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9537097), Timestamp.valueOf("2016-05-12 10:11:30.215"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9537097), Timestamp.valueOf("2016-05-12 10:11:30.215"),
 				TradeType.BUY, BigDecimal.valueOf(474));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(2866043), Timestamp.valueOf("2016-05-12 10:17:11.215"),
@@ -1557,7 +1557,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(4348363), Timestamp.valueOf("2016-05-12 10:15:50.589"),
 				TradeType.BUY, BigDecimal.valueOf(127));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(-1), Timestamp.valueOf("2016-05-12 10:14:27.77"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(-1), Timestamp.valueOf("2016-05-12 10:14:27.77"),
 				TradeType.BUY, BigDecimal.valueOf(361));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(2261593), Timestamp.valueOf("2016-05-12 10:12:28.944"),
@@ -1569,11 +1569,11 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7412279), Timestamp.valueOf("2016-05-12 10:20:6.687"),
 				TradeType.BUY, BigDecimal.valueOf(693));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(1304876), Timestamp.valueOf("2016-05-12 10:16:4.689"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(1304876), Timestamp.valueOf("2016-05-12 10:16:4.689"),
 				TradeType.BUY, BigDecimal.valueOf(881));
 		faultyTradeList.add(tradeDetails);
 
-		String stockSymbol = LoggerStrings.GIN;
+		String stockSymbol = "GIN";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
@@ -1590,10 +1590,10 @@ public class TestStockUtility {
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6379867), Timestamp.valueOf("2016-05-12 10:19:22.193"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6379867), Timestamp.valueOf("2016-05-12 10:19:22.193"),
 				TradeType.BUY, BigDecimal.valueOf(1938));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(2507192), Timestamp.valueOf("2016-05-12 10:12:55.499"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(2507192), Timestamp.valueOf("2016-05-12 10:12:55.499"),
 				TradeType.SELL, BigDecimal.valueOf(1951));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(6038258), Timestamp.valueOf("2016-05-12 10:13:39.378"),
@@ -1602,7 +1602,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(2406943), Timestamp.valueOf("2016-05-12 10:10:2.507"),
 				TradeType.SELL, BigDecimal.valueOf(1294));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(2903430), Timestamp.valueOf("2016-05-12 10:17:23.175"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(2903430), Timestamp.valueOf("2016-05-12 10:17:23.175"),
 				TradeType.SELL, BigDecimal.valueOf(1039));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7020694), Timestamp.valueOf("2016-05-12 10:10:40.985"),
@@ -1620,7 +1620,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(1097718), Timestamp.valueOf("2016-05-12 10:15:45.278"),
 				TradeType.SELL, BigDecimal.valueOf(798));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(1084410), Timestamp.valueOf("2016-05-12 10:13:53.862"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(1084410), Timestamp.valueOf("2016-05-12 10:13:53.862"),
 				TradeType.SELL, BigDecimal.valueOf(1626));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("JAE", BigDecimal.ZERO, Timestamp.valueOf("2016-05-12 10:14:34.861"), TradeType.SELL,
@@ -1649,19 +1649,19 @@ public class TestStockUtility {
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8226066), Timestamp.valueOf("2016-05-12 10:17:23.449"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8226066), Timestamp.valueOf("2016-05-12 10:17:23.449"),
 				TradeType.BUY, BigDecimal.valueOf(1116));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8341867), Timestamp.valueOf("2016-05-12 10:14:30.353"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8341867), Timestamp.valueOf("2016-05-12 10:14:30.353"),
 				TradeType.SELL, BigDecimal.valueOf(1557));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(2035940), Timestamp.valueOf("2016-05-12 10:20:0.939"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(2035940), Timestamp.valueOf("2016-05-12 10:20:0.939"),
 				TradeType.BUY, BigDecimal.valueOf(608));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COFF", BigDecimal.valueOf(7534787), Timestamp.valueOf("2016-05-12 10:18:35.603"),
 				TradeType.BUY, BigDecimal.valueOf(1809));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, null, Timestamp.valueOf("2016-05-12 10:13:10.373"), TradeType.SELL,
+		tradeDetails = new Trade("JOE", null, Timestamp.valueOf("2016-05-12 10:13:10.373"), TradeType.SELL,
 				BigDecimal.valueOf(1215));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(92571), Timestamp.valueOf("2016-05-12 10:11:51.498"),
@@ -1676,14 +1676,14 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(225290), Timestamp.valueOf("2016-05-12 10:12:45.959"),
 				TradeType.BUY, BigDecimal.valueOf(297));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(2269539), Timestamp.valueOf("2016-05-12 10:20:25.788"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(2269539), Timestamp.valueOf("2016-05-12 10:20:25.788"),
 				TradeType.BUY, BigDecimal.valueOf(1740));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(1257550), Timestamp.valueOf("2016-05-12 10:16:32.465"),
 				TradeType.SELL, BigDecimal.valueOf(1220));
 		faultyTradeList.add(tradeDetails);
 
-		String stockSymbol = LoggerStrings.JOE;
+		String stockSymbol = "JOE";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals(ErrorStrings.tradeQuantityError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
@@ -1709,19 +1709,19 @@ public class TestStockUtility {
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(3111524), Timestamp.valueOf("2016-05-12 10:13:3.386"),
 				TradeType.BUY, BigDecimal.valueOf(-1));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(3809724), Timestamp.valueOf("2016-05-12 10:14:15.211"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(3809724), Timestamp.valueOf("2016-05-12 10:14:15.211"),
 				TradeType.SELL, BigDecimal.valueOf(1297));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7039350), Timestamp.valueOf("2016-05-12 10:11:34.910"),
 				TradeType.BUY, BigDecimal.valueOf(1275));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(8925985), Timestamp.valueOf("2016-05-12 10:20:49.134"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(8925985), Timestamp.valueOf("2016-05-12 10:20:49.134"),
 				TradeType.SELL, BigDecimal.valueOf(325));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9799037), Timestamp.valueOf("2016-05-12 10:12:1.710"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9799037), Timestamp.valueOf("2016-05-12 10:12:1.710"),
 				TradeType.BUY, BigDecimal.valueOf(428));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(9468940), Timestamp.valueOf("2016-05-12 10:16:8.808"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(9468940), Timestamp.valueOf("2016-05-12 10:16:8.808"),
 				TradeType.SELL, BigDecimal.valueOf(253));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(3245213), Timestamp.valueOf("2016-05-12 10:14:14.480"),
@@ -1754,16 +1754,16 @@ public class TestStockUtility {
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(9164239), Timestamp.valueOf("2016-05-12 10:18:21.848"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(9164239), Timestamp.valueOf("2016-05-12 10:18:21.848"),
 				TradeType.SELL, BigDecimal.valueOf(667));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8381522), Timestamp.valueOf("2016-05-12 10:17:10.654"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8381522), Timestamp.valueOf("2016-05-12 10:17:10.654"),
 				TradeType.BUY, BigDecimal.valueOf(781));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(3267038), Timestamp.valueOf("2016-05-12 10:10:35.448"),
 				TradeType.SELL, BigDecimal.valueOf(149));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(2900029), Timestamp.valueOf("2016-05-12 10:13:12.386"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(2900029), Timestamp.valueOf("2016-05-12 10:13:12.386"),
 				TradeType.BUY, BigDecimal.valueOf(1386));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(3170153), Timestamp.valueOf("2016-05-12 10:13:28.528"),
@@ -1772,7 +1772,7 @@ public class TestStockUtility {
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(4214571), Timestamp.valueOf("2016-05-12 10:18:4.143"),
 				TradeType.SELL, BigDecimal.valueOf(411));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(5865105), Timestamp.valueOf("2016-05-12 10:13:4.29"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(5865105), Timestamp.valueOf("2016-05-12 10:13:4.29"),
 				TradeType.SELL, BigDecimal.ZERO);
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(8590479), Timestamp.valueOf("2016-05-12 10:12:13.550"),
@@ -1782,7 +1782,7 @@ public class TestStockUtility {
 				TradeType.SELL, BigDecimal.valueOf(644));
 		faultyTradeList.add(tradeDetails);
 
-		String stockSymbol = LoggerStrings.POP;
+		String stockSymbol = "POP";
 		Timestamp currentTime = Timestamp.valueOf("2016-05-12 10:17:21.595");
 		assertEquals(ErrorStrings.tradePriceError, StockUtility
 				.volumeWeightedStockPrice(stockSymbol, currentTime, faultyTradeList, VolumeWeightType.FIVE_MINUTES)
@@ -1799,19 +1799,19 @@ public class TestStockUtility {
 		List<Trade> faultyTradeList = new ArrayList<Trade>();
 		Trade tradeDetails = new Trade();
 
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(6164652), Timestamp.valueOf("2016-05-12 10:20:20.551"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(6164652), Timestamp.valueOf("2016-05-12 10:20:20.551"),
 				TradeType.SELL, BigDecimal.valueOf(336));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("WAT", BigDecimal.valueOf(9646356), Timestamp.valueOf("2016-05-12 10:14:29.21"),
 				TradeType.SELL, BigDecimal.valueOf(514));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(7656676), Timestamp.valueOf("2016-05-12 10:14:15.33"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(7656676), Timestamp.valueOf("2016-05-12 10:14:15.33"),
 				TradeType.BUY, BigDecimal.valueOf(1301));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.POP, BigDecimal.valueOf(3794936), Timestamp.valueOf("2016-05-12 10:16:51.757"),
+		tradeDetails = new Trade("POP", BigDecimal.valueOf(3794936), Timestamp.valueOf("2016-05-12 10:16:51.757"),
 				TradeType.SELL, BigDecimal.valueOf(765));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.ALE, BigDecimal.valueOf(8523778), Timestamp.valueOf("2016-05-12 10:12:49.372"),
+		tradeDetails = new Trade("ALE", BigDecimal.valueOf(8523778), Timestamp.valueOf("2016-05-12 10:12:49.372"),
 				TradeType.BUY, BigDecimal.valueOf(370));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("TEA", BigDecimal.valueOf(43259), Timestamp.valueOf("2016-05-12 10:14:13.551"),
@@ -1820,16 +1820,16 @@ public class TestStockUtility {
 		tradeDetails = new Trade("COK", BigDecimal.valueOf(7371953), Timestamp.valueOf("2016-05-12 10:19:8.986"),
 				TradeType.SELL, BigDecimal.valueOf(890));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.JOE, BigDecimal.valueOf(4904716), Timestamp.valueOf("2016-05-12 10:16:13.229"),
+		tradeDetails = new Trade("JOE", BigDecimal.valueOf(4904716), Timestamp.valueOf("2016-05-12 10:16:13.229"),
 				TradeType.SELL, BigDecimal.valueOf(745));
 		faultyTradeList.add(tradeDetails);
 		tradeDetails = new Trade("PEP", BigDecimal.valueOf(9588444), Timestamp.valueOf("2016-05-12 10:14:30.966"),
 				TradeType.BUY, BigDecimal.valueOf(977));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8226066), Timestamp.valueOf("2016-05-12 10:17:23.449"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8226066), Timestamp.valueOf("2016-05-12 10:17:23.449"),
 				TradeType.BUY, BigDecimal.valueOf(1116));
 		faultyTradeList.add(tradeDetails);
-		tradeDetails = new Trade(LoggerStrings.GIN, BigDecimal.valueOf(8341867), Timestamp.valueOf("2016-05-12 10:14:30.353"),
+		tradeDetails = new Trade("GIN", BigDecimal.valueOf(8341867), Timestamp.valueOf("2016-05-12 10:14:30.353"),
 				TradeType.SELL, BigDecimal.valueOf(1557));
 		faultyTradeList.add(tradeDetails);
 
@@ -1901,16 +1901,16 @@ public class TestStockUtility {
 		stockDetails = new Stock("TEA", StockType.COMMON, BigDecimal.valueOf(0), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(100));
 		localStockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.POP, StockType.COMMON, BigDecimal.valueOf(8), BigDecimal.valueOf(0),
+		stockDetails = new Stock("POP", StockType.COMMON, BigDecimal.valueOf(8), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(100));
 		localStockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.ALE, StockType.COMMON, BigDecimal.valueOf(23), BigDecimal.valueOf(0),
+		stockDetails = new Stock("ALE", StockType.COMMON, BigDecimal.valueOf(23), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(60));
 		localStockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.GIN, StockType.PREFERRED, BigDecimal.valueOf(8), BigDecimal.valueOf(2),
+		stockDetails = new Stock("GIN", StockType.PREFERRED, BigDecimal.valueOf(8), BigDecimal.valueOf(2),
 				BigDecimal.valueOf(100));
 		localStockList.add(stockDetails);
-		stockDetails = new Stock(LoggerStrings.JOE, StockType.COMMON, BigDecimal.valueOf(13), BigDecimal.valueOf(0),
+		stockDetails = new Stock("JOE", StockType.COMMON, BigDecimal.valueOf(13), BigDecimal.valueOf(0),
 				BigDecimal.valueOf(250));
 		localStockList.add(stockDetails);
 		stockDetails = new Stock(null, StockType.COMMON, BigDecimal.valueOf(1), BigDecimal.valueOf(13),
