@@ -58,23 +58,23 @@ public final class StockUtility {
 			 */
 
 			if (stockList == null || stockList.isEmpty()) {
-				logger.error(ErrorStrings.stockListError);
+				logger.error(ErrorStrings.stockListError+" | null stockList = ",stockList);
 				return ErrorStrings.stockListError;
 			}
 
 			if (stockPrice == null || stockPrice.equals(BigDecimal.ZERO) || stockPrice.compareTo(BigDecimal.ZERO) < 0) {
-				logger.error(ErrorStrings.stockPriceError);
+				logger.error(ErrorStrings.stockPriceError+" | null, 0 or -ve stockPrice = ",stockPrice);
 				return ErrorStrings.stockPriceError;
 			}
 
 			if (stockSymbol == null) {
-				logger.error(ErrorStrings.stockSymbolError);
+				logger.error(ErrorStrings.stockSymbolError+" | null stockSymbol = ",stockSymbol);
 				return ErrorStrings.stockSymbolError;
 			}
 
 			if (stockFunction == null || (stockFunction != StockFunctionType.DIVIDEND_YIELD
 					&& stockFunction != StockFunctionType.PE_RATIO)) {
-				logger.error(ErrorStrings.stockFunctionFlagError);
+				logger.error(ErrorStrings.stockFunctionFlagError+" | null or wrong stockFunction = ",stockFunction);
 				return ErrorStrings.stockFunctionFlagError;
 			}
 			
@@ -88,7 +88,7 @@ public final class StockUtility {
 				tempStock = iterator.next();
 
 				if (tempStock.getStockSymbol() == null) {
-					logger.error(ErrorStrings.stockSymbolError);
+					logger.error(ErrorStrings.stockSymbolError+" | null stockSymbol = ",tempStock.getStockSymbol());
 					return ErrorStrings.stockSymbolError;
 				}
 
@@ -103,7 +103,7 @@ public final class StockUtility {
 
 						if (tempStock.getLastDividend() == null || tempStock.getLastDividend().equals(BigDecimal.ZERO)
 								|| tempStock.getLastDividend().compareTo(BigDecimal.ZERO) < 0) {
-							logger.error(ErrorStrings.lastDividendError);
+							logger.error(ErrorStrings.lastDividendError+" | null, 0 or -ve lastDividend = ",tempStock.getLastDividend());
 							return ErrorStrings.lastDividendError;
 						}
 						returnThis = stockPrice.divide(tempStock.getLastDividend(), 20, BigDecimal.ROUND_HALF_UP); 
@@ -122,7 +122,7 @@ public final class StockUtility {
 
 						if (tempStock.getStockTypeObj() == null || (tempStock.getStockTypeObj() != StockType.COMMON
 								&& tempStock.getStockTypeObj() != StockType.PREFERRED)) {
-							logger.error(ErrorStrings.stockTypeFlagError);
+							logger.error(ErrorStrings.stockTypeFlagError+" | null or wrong stockType = ",tempStock.getStockTypeObj());
 							return ErrorStrings.stockTypeFlagError;
 						}
 
@@ -132,7 +132,7 @@ public final class StockUtility {
 
 							if (tempStock.getLastDividend() == null
 									|| tempStock.getLastDividend().compareTo(BigDecimal.ZERO) < 0) {
-								logger.error(ErrorStrings.lastDividendError);
+								logger.error(ErrorStrings.lastDividendError+" | null or -ve lastDividend = ",tempStock.getLastDividend());
 								return ErrorStrings.lastDividendError;
 							}
 							
@@ -148,13 +148,13 @@ public final class StockUtility {
 
 							if (tempStock.getFixedDividend() == null
 									|| tempStock.getFixedDividend().compareTo(BigDecimal.ZERO) < 0) {
-								logger.error(ErrorStrings.fixedDividendError);
+								logger.error(ErrorStrings.fixedDividendError+" | null or -ve fixedDividend = ",tempStock.getFixedDividend());
 								return ErrorStrings.fixedDividendError;
 							}
 
 							if (tempStock.getParValue() == null
 									|| tempStock.getParValue().compareTo(BigDecimal.ZERO) < 0) {
-								logger.error(ErrorStrings.parValueError);
+								logger.error(ErrorStrings.parValueError+" | null or -ve parValue = ",tempStock.getParValue());
 								return ErrorStrings.parValueError;
 							}
 							returnThis = tempStock.getFixedDividend().multiply(tempStock.getParValue().divide(
@@ -168,17 +168,17 @@ public final class StockUtility {
 					}
 				}
 			}
-			logger.error(ErrorStrings.stockSymbolNotFound);
+			logger.error(ErrorStrings.stockSymbolNotFound+" | Stock Symbol Not Found in List ",stockList);
 			return ErrorStrings.stockSymbolNotFound;
 
 		} catch (NullPointerException e) {
-			logger.error(ErrorStrings.nullPointer);
+			logger.error(ErrorStrings.nullPointer,e);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
-			logger.error(ErrorStrings.arithmeticException);
+			logger.error(ErrorStrings.arithmeticException,e);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
-			logger.error(ErrorStrings.unknownException);
+			logger.error(ErrorStrings.unknownException,e);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -207,32 +207,32 @@ public final class StockUtility {
 			 */
 
 			if (stockSymbol == null || stockSymbol.equals(null)) {
-				logger.error(ErrorStrings.stockSymbolError);
+				logger.error(ErrorStrings.stockSymbolError+" | null stockSymbol = ",stockSymbol);
 				return ErrorStrings.stockSymbolError;
 			}
 
 			if (quantity == null || quantity.equals(BigDecimal.ZERO) || quantity.compareTo(BigDecimal.ZERO) < 0) {
-				logger.error(ErrorStrings.tradeQuantityError);
+				logger.error(ErrorStrings.tradeQuantityError+" | null, 0 or -ve quantity = ",quantity);
 				return ErrorStrings.tradeQuantityError;
 			}
 
 			if (currentTime == null || currentTime.getTime() <= 0) {
-				logger.error(ErrorStrings.currentTimeError);
+				logger.error(ErrorStrings.currentTimeError+" | null or <= 0currentTime = ",currentTime);
 				return ErrorStrings.currentTimeError;
 			}
 
 			if (typeOfTrade == null || (typeOfTrade != TradeType.BUY && typeOfTrade != TradeType.SELL)) {
-				logger.error(ErrorStrings.tradeTypeFlagError);
+				logger.error(ErrorStrings.tradeTypeFlagError+" | null or wrong typeOfTrade = ",typeOfTrade);
 				return ErrorStrings.tradeTypeFlagError;
 			}
 
 			if (tradePrice == null || tradePrice.equals(BigDecimal.ZERO) || tradePrice.compareTo(BigDecimal.ZERO) < 0) {
-				logger.error(ErrorStrings.tradePriceError);
+				logger.error(ErrorStrings.tradePriceError+" | null, 0 or -ve tradePrice = ",tradePrice);
 				return ErrorStrings.tradePriceError;
 			}
 
 			if (tradeList == null) {
-				logger.error(ErrorStrings.tradeListError);
+				logger.error(ErrorStrings.tradeListError+" | null tradeList = ",tradeList);
 				return ErrorStrings.tradeListError;
 			}
 			
@@ -256,7 +256,7 @@ public final class StockUtility {
 			}
 
 			if (duplicateFlag) {
-				logger.error(ErrorStrings.duplicateFoundError);
+				logger.error(ErrorStrings.duplicateFoundError+" | Duplicate Recrod Found in List. Passed Record = ",newTradeRecord);
 				return ErrorStrings.duplicateFoundError;
 			}
 			
@@ -268,13 +268,13 @@ public final class StockUtility {
 			return tradeList;
 
 		} catch (NullPointerException e) {
-			logger.error(ErrorStrings.nullPointer);
+			logger.error(ErrorStrings.nullPointer,e);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
-			logger.error(ErrorStrings.arithmeticException);
+			logger.error(ErrorStrings.arithmeticException,e);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
-			logger.error(ErrorStrings.unknownException);
+			logger.error(ErrorStrings.unknownException,e);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -298,20 +298,23 @@ public final class StockUtility {
 			logger.debug("Primary error check started");
 			
 			if (stockSymbol == null || stockSymbol.equals(null)) {
-				logger.error(ErrorStrings.stockSymbolError);
+				logger.error(ErrorStrings.stockSymbolError+" | null stockSymbol = ",stockSymbol);
 				return ErrorStrings.stockSymbolError;
 			}
+			
 			if (volumeWeightTypeObj == null || (volumeWeightTypeObj != VolumeWeightType.FIVE_MINUTES
 					&& volumeWeightTypeObj != VolumeWeightType.TOTAL)) {
-				logger.error(ErrorStrings.volumeWeightFlagError);
+				logger.error(ErrorStrings.volumeWeightFlagError+" | null or wrong volumeWeightTypeObj = ",volumeWeightTypeObj);
 				return ErrorStrings.volumeWeightFlagError;
 			}
-			if ((currentTime == null || currentTime.getTime() <= 0) && volumeWeightTypeObj != VolumeWeightType.TOTAL) {
-				logger.error(ErrorStrings.currentTimeError);
+			
+			//current time only comes into relevance when calculated Volume Weighted Stock Price for past 5 minutes. 
+			if ((currentTime == null || currentTime.getTime() <= 0) && volumeWeightTypeObj != VolumeWeightType.TOTAL){
+				logger.error(ErrorStrings.currentTimeError+" | null or <=0 currentTime = ",currentTime);
 				return ErrorStrings.currentTimeError;
 			}
 			if (tradeList == null || tradeList.isEmpty()) {
-				logger.error(ErrorStrings.tradeListError);
+				logger.error(ErrorStrings.tradeListError+" | null or empty tradeList = ",tradeList);
 				return ErrorStrings.tradeListError;
 			}
 			
@@ -337,7 +340,7 @@ public final class StockUtility {
 				tempTrade = iterator.next();
 
 				if (tempTrade.getStockSymbol() == null || tempTrade.getStockSymbol().equals(null)) {
-					logger.error(ErrorStrings.stockSymbolError);
+					logger.error(ErrorStrings.stockSymbolError+" | null stockSymbol = ",tempTrade.getStockSymbol());
 					return ErrorStrings.stockSymbolError;
 				}
 
@@ -345,10 +348,10 @@ public final class StockUtility {
 
 					if (volumeWeightTypeObj.equals(VolumeWeightType.FIVE_MINUTES)) {
 						
-						logger.debug("Volume Weight Type: Last 5 Minutes");
+						logger.debug("Step: Volume Weight Type: Last 5 Minutes");
 
 						if (tempTrade.getTradeTimeStamp() == null || tempTrade.getTradeTimeStamp().getTime() <= 0) {
-							logger.error(ErrorStrings.tradeTimeError);
+							logger.error(ErrorStrings.tradeTimeError+" | null or <=0 tradeTime = ",tempTrade.getTradeTimeStamp());
 							return ErrorStrings.tradeTimeError;
 						}
 
@@ -357,13 +360,13 @@ public final class StockUtility {
 
 							if (tempTrade.getQuantity() == null || tempTrade.getQuantity().equals(BigDecimal.ZERO)
 									|| tempTrade.getQuantity().compareTo(BigDecimal.ZERO) < 0) {
-								logger.error(ErrorStrings.tradeQuantityError);
+								logger.error(ErrorStrings.tradeQuantityError+" | null, 0 or -ve tradeQuantity = ",tempTrade.getQuantity());
 								return ErrorStrings.tradeQuantityError;
 							}
 
 							if (tempTrade.getTradePrice() == null || tempTrade.getTradePrice().equals(BigDecimal.ZERO)
 									|| tempTrade.getTradePrice().compareTo(BigDecimal.ZERO) < 0) {
-								logger.error(ErrorStrings.tradePriceError);
+								logger.error(ErrorStrings.tradePriceError+" | null, 0  or -ve tradePrice = ",tempTrade.getTradePrice());
 								return ErrorStrings.tradePriceError;
 							}
 
@@ -375,7 +378,7 @@ public final class StockUtility {
 					}
 					if (volumeWeightTypeObj.equals(VolumeWeightType.TOTAL)) {
 						
-						logger.debug("Volume Weight Type: Overall");
+						logger.debug("Step: Volume Weight Type: Overall");
 
 						totalTradePriceQuantity = totalTradePriceQuantity
 								.add(tempTrade.getTradePrice().multiply(tempTrade.getQuantity()));
@@ -394,18 +397,18 @@ public final class StockUtility {
 				
 				return totalTradePriceQuantity;
 			} else {
-				logger.error(ErrorStrings.noRelevantTradesFound);
+				logger.error(ErrorStrings.noRelevantTradesFound+" | No Relevant Trade Found For Stock Symbol = ",stockSymbol);
 				return ErrorStrings.noRelevantTradesFound;
 			}
 
 		} catch (NullPointerException e) {
-			logger.error(ErrorStrings.nullPointer);
+			logger.error(ErrorStrings.nullPointer,e);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
-			logger.error(ErrorStrings.arithmeticException);
+			logger.error(ErrorStrings.arithmeticException,e);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
-			logger.error(ErrorStrings.unknownException);
+			logger.error(ErrorStrings.unknownException,e);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -427,12 +430,12 @@ public final class StockUtility {
 			logger.debug("Primary Error Check Started");
 			
 			if (stockList == null || stockList.equals(null) || stockList.isEmpty()) {
-				logger.error(ErrorStrings.stockListError);
+				logger.error(ErrorStrings.stockListError+" | null or empty stockList = ",stockList);
 				return ErrorStrings.stockListError;
 			}
 
 			if (tradeList == null || tradeList.equals(null) || tradeList.isEmpty()) {
-				logger.error(ErrorStrings.tradeListError);
+				logger.error(ErrorStrings.tradeListError+" | null or empty tradeList = ",tradeList);
 				return ErrorStrings.tradeListError;
 			}
 			
@@ -449,7 +452,7 @@ public final class StockUtility {
 				tempStock = stockIterator.next();
 
 				if (tempStock.getStockSymbol() == null || tempStock.getStockSymbol().equals(null)) {
-					logger.error(ErrorStrings.stockSymbolError);
+					logger.error(ErrorStrings.stockSymbolError+" | null stockSymbol = ",tempStock.getStockSymbol());
 					return ErrorStrings.stockSymbolError;
 				}
 
@@ -466,13 +469,13 @@ public final class StockUtility {
 			return geometricMean;
 
 		} catch (NullPointerException e) {
-			logger.error(ErrorStrings.nullPointer);
+			logger.error(ErrorStrings.nullPointer,e);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
-			logger.error(ErrorStrings.arithmeticException);
+			logger.error(ErrorStrings.arithmeticException,e);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
-			logger.error(ErrorStrings.unknownException);
+			logger.error(ErrorStrings.unknownException,e);
 			return ErrorStrings.unknownException;
 		}
 	}
@@ -512,13 +515,13 @@ public final class StockUtility {
 		}
 		return s.round(new MathContext(1 + (int) (Math.log10(Math.abs(0.5 / eps)))));
 		}catch (NullPointerException e) {
-			logger.error(ErrorStrings.nullPointer);
+			logger.error(ErrorStrings.nullPointer,e);
 			return ErrorStrings.nullPointer;
 		} catch (ArithmeticException e) {
-			logger.error(ErrorStrings.arithmeticException);
+			logger.error(ErrorStrings.arithmeticException,e);
 			return ErrorStrings.arithmeticException;
 		} catch (Exception e) {
-			logger.error(ErrorStrings.unknownException);
+			logger.error(ErrorStrings.unknownException,e);
 			return ErrorStrings.unknownException;
 		}
 	}

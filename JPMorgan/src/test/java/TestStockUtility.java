@@ -12,7 +12,10 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 
 import main.java.bo.Stock;
 import main.java.bo.Trade;
@@ -32,6 +35,20 @@ public class TestStockUtility {
 	static List<Trade> tradeList;
 	static List<Stock> stockList;
 	private static final Logger logger = (Logger) LogManager.getLogger(TestStockUtility.class);
+	
+	@Rule
+    public TestWatcher watchman = new TestWatcher() {
+ 
+        @Override
+        protected void failed(Throwable e, Description description) {
+            logger.error(description, e);
+        }
+ 
+        @Override
+        protected void succeeded(Description description) {
+            logger.info(description);
+        }
+    };
 
 	/*
 	 * Populate Stock and Trade lists with random data
